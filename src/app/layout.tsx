@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <ThemeRegistry>
           <main>
-            <Stack>
+            <Stack direction="row">
               <SideBar></SideBar>
               <Stack component="main" flexDirection="column" width="full" sx={{ flexGrow: 1 }}>
                 <Stack>

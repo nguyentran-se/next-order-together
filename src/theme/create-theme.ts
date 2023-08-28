@@ -46,6 +46,9 @@ const theme = createTheme({
           '&.Mui-selected': {
             backgroundColor: functionalColors['hoverBg'],
             color: primary[500],
+            '& svg': {
+              fill: primary[500],
+            },
             '&::before': {
               position: 'absolute',
               content: '""',
@@ -68,10 +71,11 @@ const theme = createTheme({
     MuiListItemIcon: {
       styleOverrides: {
         root: {
-          minWidth: '40px'
-        }
-      }
-    }
+          minWidth: '40px',
+        },
+      
+      },
+    },
   },
 });
 
