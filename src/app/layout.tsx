@@ -1,4 +1,10 @@
+'use client';
+
+import ContentArea from '@/components/ContentArea.component';
+import NavBar from '@/components/NavBar.component.';
+import SideBar from '@/components/SideBar.component';
 import ThemeRegistry from '@/theme/ThemeRegistry';
+import { Stack } from '@mui/material';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -15,7 +21,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head></head>
       <body className={inter.className}>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <main>
+            <Stack>
+              <SideBar></SideBar>
+              <Stack component="main" flexDirection="column" width="full" sx={{ flexGrow: 1 }}>
+                <Stack>
+                  <NavBar></NavBar>
+                </Stack>
+                <Stack>
+                  <ContentArea>{children}</ContentArea>
+                </Stack>
+              </Stack>
+            </Stack>
+          </main>
+        </ThemeRegistry>
       </body>
     </html>
   );
