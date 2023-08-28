@@ -1,10 +1,6 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+'use client';
+
 import { Metadata } from 'next';
-import { Box } from '@mui/material';
-import SideBar from '@/components/SideBar.component';
-import NavBar from '@/components/NavBar.component.';
-import ContentArea from '@/components/ContentArea.component';
 
 // For SEO - Just for TESTING
 export const metadata: Metadata = {
@@ -12,15 +8,9 @@ export const metadata: Metadata = {
   description: "Let's order food and drinks together",
 };
 
-export default function Home() {
+// Move Dashboard into a separate route later
+export default function Dashboard() {
   return (
-    <main>
-      <Box>
-        <SideBar></SideBar>
-        <Box></Box>
-        <NavBar></NavBar>
-        <ContentArea></ContentArea>
-      </Box>
-    </main>
+    <>Dashboard</>
   );
 }

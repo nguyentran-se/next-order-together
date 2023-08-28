@@ -36,6 +36,43 @@ const theme = createTheme({
       main: functionalColors['warningBg'],
     },
   },
+  components: {
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          '& .MuiTypography-root': {
+            fontWeight: '500',
+          },
+          '&.Mui-selected': {
+            backgroundColor: functionalColors['hoverBg'],
+            color: primary[500],
+            '&::before': {
+              position: 'absolute',
+              content: '""',
+              height: '10px',
+              left: 0,
+              borderLeft: '4px solid',
+              borderRadius: '20px',
+            },
+          },
+          '&:hover': {
+            backgroundColor: functionalColors['hoverBg'],
+            color: primary[500],
+            '& svg': {
+              fill: primary[500],
+            },
+          },
+        },
+      },
+    },
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          minWidth: '40px'
+        }
+      }
+    }
+  },
 });
 
 export default theme;

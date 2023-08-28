@@ -9,12 +9,12 @@ import NextAppDirEmotionCacheProvider from './NextAppDirEmotionCacheProvider';
 export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
   return (
     // TODO: Research on EmotionCache
-    <NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>
+    // <NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         {children}
       </ThemeProvider>
-    </NextAppDirEmotionCacheProvider>
+    /* </NextAppDirEmotionCacheProvider> */
   );
 }
