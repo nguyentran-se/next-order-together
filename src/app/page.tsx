@@ -1,6 +1,6 @@
-'use client';
-
 import { Metadata } from 'next';
+import { Suspense } from 'react';
+import Card from './Card.component';
 
 // For SEO - Just for TESTING
 export const metadata: Metadata = {
@@ -11,6 +11,10 @@ export const metadata: Metadata = {
 // Move Dashboard into a separate route later
 export default function Dashboard() {
   return (
-    <>Dashboard</>
+    <>
+      <Suspense fallback={<p style={{ textAlign: 'center' }}>loading... on initial request</p>}>
+        <Card />
+      </Suspense>
+    </>
   );
 }

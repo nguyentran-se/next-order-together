@@ -1,3 +1,5 @@
+'use client';
+
 import { sideBarTabs } from '@/constants';
 import { functionalColors } from '@/theme/colors/functional';
 import { drawerWidth } from '@/theme/sizes/drawer';
