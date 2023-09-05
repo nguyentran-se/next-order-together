@@ -1,5 +1,6 @@
 'use client';
 
+import { apiClient, slack } from '@/app/layout';
 import { sideBarTabs } from '@/constants';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
@@ -18,6 +19,7 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useRef } from 'react';
 
@@ -33,6 +35,11 @@ export default function NavBar() {
       return;
     }
     setOrderDrawerOpened(open);
+  };
+
+  const clickAvatar = async () => {
+    setAvatarBtnClicked(true);
+    // const connect = slac
   };
 
   const page = sideBarTabs.find((tab) => tab.url === pathName)?.displayText;
@@ -52,7 +59,7 @@ export default function NavBar() {
           onClose={toggleDrawer(false)}
         >
           <Container>
-            <Typography textAlign='center'>Nothing to show here.</Typography>
+            <Typography textAlign="center">Nothing to show here.</Typography>
           </Container>
         </Drawer>
       </React.Fragment>
@@ -111,6 +118,12 @@ export default function NavBar() {
                     open={isAvatarBtnClicked}
                     onClose={() => setAvatarBtnClicked(false)}
                   >
+                    <MenuItem>
+                      {/* <Link href={slack.createAuthRequest()}> */}
+                      <Link href={'https://slack.com/openid/connect/authorize?scope=openid%20email%20profile&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Flocalhost%3A8081&amp;client_id=2697222791.5807891074339'}>
+                        <Typography textAlign="center">Setting</Typography>
+                      </Link>
+                    </MenuItem>
                     <MenuItem>
                       <Typography textAlign="center">Setting</Typography>
                     </MenuItem>

@@ -7,6 +7,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Providers from '@/utils/provider';
+import { ApiClient } from '@/apis/api-client';
+import Slack from '@/apis/slack';
+import { Suspense } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,7 +33,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <NavBar></NavBar>
                   </Stack>
                   <Stack>
-                    <ContentArea>{children}</ContentArea>
+                    <ContentArea>
+                      {/* TODO: include later */}
+                      {/* <Suspense fallback={<p style={{ textAlign: 'center' }}>loading... on initial request</p>}> */}
+                        {children}
+                      {/* </Suspense> */}
+                    </ContentArea>
                   </Stack>
                 </Stack>
               </Stack>
@@ -41,3 +49,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+export const apiClient = new ApiClient();
+export const slack = new Slack();
