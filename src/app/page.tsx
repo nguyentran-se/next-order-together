@@ -1,6 +1,10 @@
+'use client';
+
+import { postSignIn } from '@/apis/queries';
 import { Metadata } from 'next';
-import { Suspense } from 'react';
-import Card from './Card.component';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
+import { Typography } from '@mui/material';
 
 // For SEO - Just for TESTING
 export const metadata: Metadata = {
@@ -10,11 +14,27 @@ export const metadata: Metadata = {
 
 // Move Dashboard into a separate route later
 export default function Dashboard() {
+  const [isLoggedin, setLoggedin] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code');
+
+  useEffect(() => {
+    if (code) {
+      postSignIn(code)
+        .then((res) => {
+          setLoggedin(true);
+        })
+        .catch((err) => {
+          setErrorMsg(err);
+        });
+    }
+  }, [code]);
+
   return (
     <>
-      <Suspense fallback={<p style={{ textAlign: 'center' }}>loading... on initial request</p>}>
-        <Card />
-      </Suspense>
+      <Suspense fallback={<p style={{ textAlign: 'center' }}>loading... on initial request</p>}>{isLoggedin && 'logged in'}</Suspense>
+      {errorMsg && <Typography>Failed to log in</Typography>}
     </>
   );
 }

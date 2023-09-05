@@ -1,3 +1,4 @@
 export const API_URLS = {
-  homepage: '/'
+  signIn: '/sign-in',
+  room: '/rooms',
 }
