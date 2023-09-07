@@ -8,7 +8,7 @@ export interface IDish {
     amountInMinor: number;
   };
   position: number;
-  currency: {
+  _currency: {
     code: string;
     symbol: string;
     exponent: number;

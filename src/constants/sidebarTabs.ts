@@ -5,7 +5,7 @@ export const sideBarTabs = [
   },
   {
     displayText: 'Food Lounge',
-    url: '/waiting-room',
+    url: '/rooms',
   },
   {
     displayText: 'My Orders',

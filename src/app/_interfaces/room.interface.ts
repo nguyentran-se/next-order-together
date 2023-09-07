@@ -71,7 +71,7 @@ export interface IRoomDetail {
   schedulerOrderConfig: ISchedulerOrderConfig;
 }
 
-interface IMenu {
+export interface IMenu {
   menuMeta: {
     orderValueLimit: number;
     noLocationOrderValueLimit: number;
