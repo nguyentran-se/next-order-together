@@ -33,7 +33,24 @@ export default function SideBar() {
   };
 
   return (
-    <Stack width={isDrawerCollapsed ? drawerWidth['collaped'] : drawerWidth['open']} position="relative">
+    <Drawer
+      style={{ zIndex: 1199 }}
+      sx={{
+        width: isDrawerCollapsed ? drawerWidth['collaped'] : drawerWidth['open'],
+        position: 'relative',
+        flexShrink: 0,
+        transition: 'ease-in 0.15s',
+        '& .MuiDrawer-paper': {
+          padding: '0 1rem',
+          boxSizing: 'border-box',
+          transition: 'ease-in-out 0.15s',
+          width: isDrawerCollapsed ? drawerWidth['collaped'] : drawerWidth['open'],
+          overflow: isDrawerCollapsed ? 'hidden' : 'auto',
+        },
+      }}
+      variant="permanent"
+      anchor="left"
+    >
       <Stack position={'absolute'} right={0} top="44px" zIndex={1200} sx={{ transform: 'translateX(50%)' }}>
         <IconButton
           color="primary"
@@ -52,59 +69,43 @@ export default function SideBar() {
           )}
         </IconButton>
       </Stack>
-      <Drawer
-        style={{ zIndex: 1199 }}
-        sx={{
-          flexShrink: 0,
-          transition: 'ease-in 0.3s',
-          '& .MuiDrawer-paper': {
-            padding: '0 1rem',
-            boxSizing: 'border-box',
-            transition: 'ease-in-out 0.15s',
-            width: isDrawerCollapsed ? drawerWidth['collaped'] : drawerWidth['open'],
-            overflow: isDrawerCollapsed ? 'hidden' : 'auto',
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Toolbar />
-        {/* <Divider /> */}
-        <List>
-          {sideBarTabs.map((tab, index) => (
-            <ListItem key={tab.displayText} disablePadding>
-              <ListItemButton
-                sx={{
-                  borderRadius: '5px',
-                  ':hover': {
-                    bgcolor: functionalColors.hoverBg,
-                  },
-                }}
-                selected={tab.url === pathName}
-                onClick={(e) => handleTabClick(e, tab.url)}
-              >
-                <ListItemIcon>
-                  {tab.displayText === 'Home' && <HomeIcon />}
-                  {tab.displayText === 'Food Lounge' && <RestaurantMenuIcon />}
-                  {tab.displayText === 'My Orders' && <AutoStoriesIcon />}
-                </ListItemIcon>
-                {
-                  <ListItemText
-                    primary={tab.displayText}
-                    sx={{
-                      marginTop: 0,
-                      marginBottom: 0,
-                      opacity: isDrawerCollapsed ? 0 : 1,
-                      whiteSpace: 'nowrap',
-                      transition: 'ease-in-out 0.15s',
-                    }}
-                  />
-                }
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </Stack>
+      <Toolbar />
+      {/* <Divider /> */}
+      <List>
+        {sideBarTabs.map((tab, index) => (
+          <ListItem key={tab.displayText} disablePadding>
+            <ListItemButton
+              sx={{
+                borderRadius: '5px',
+                ':hover': {
+                  bgcolor: functionalColors.hoverBg,
+                },
+              }}
+              selected={tab.url === pathName}
+              onClick={(e) => handleTabClick(e, tab.url)}
+            >
+              <ListItemIcon>
+                {tab.displayText === 'Home' && <HomeIcon />}
+                {tab.displayText === 'Food Lounge' && <RestaurantMenuIcon />}
+                {tab.displayText === 'My Orders' && <AutoStoriesIcon />}
+              </ListItemIcon>
+              {
+                <ListItemText
+                  primary={tab.displayText}
+                  sx={{
+                    marginTop: 0,
+                    marginBottom: 0,
+                    opacity: isDrawerCollapsed ? 0 : 1,
+                    whiteSpace: 'nowrap',
+                    transition: 'ease-in-out 0.15s',
+                  }}
+                />
+              }
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
+    // </Stack>
   );
 }

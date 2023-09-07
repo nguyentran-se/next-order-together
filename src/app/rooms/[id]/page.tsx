@@ -7,6 +7,7 @@ import HostInfo from './HostInfo';
 import RoomInfo from './RoomInfo';
 import Menu from './Menu';
 import { mockMenu } from './mock';
+import Spacer from '@/app/_common/Spacer';
 
 function Room() {
   const params = useParams();
@@ -30,6 +31,7 @@ function Room() {
             <HostInfo hostInfo="test"></HostInfo>
           </Stack>
         </Stack>
+        <Spacer size={2}></Spacer>
         <Box>
           <Menu menu={mockMenu}></Menu>
         </Box>
