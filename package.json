@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:ln": "next dev -p 8080 & local-ssl-proxy --source 8081 --target 8080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
@@ -25,6 +27,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "local-ssl-proxy": "^2.0.5",
     "prettier": "3.0.2"
   },
   "peerDependencies": {
