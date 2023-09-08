@@ -28,6 +28,18 @@ export default class Slack {
     );
   };
 
+  getOpenIdUrl() {
+    const __DEV__ = process.env.NODE_ENV === 'development';
+
+    const openIdUrl = 'https://slack.com/openid/connect/authorize';
+    const url = new URL(openIdUrl);
+    url.searchParams.append('scope', 'openid,email,profile');
+    url.searchParams.append('response_type', 'code');
+    url.searchParams.append('redirect_uri', __DEV__ ? 'https://localhost:8081/' : process.env.NEXT_PUBLIC_REDIRECT_URI);
+    url.searchParams.append('client_id', process.env.NEXT_PUBLIC_CLIENT_ID);
+    return url.toString();
+  }
+
   // createExchangeTokenPostRequest = (code: string) => {
   //   const url = 'https://slack.com/api/openid.connect.token';
   //   const __DEV__ = process.env.NODE_ENV === 'development';
@@ -47,3 +59,4 @@ export default class Slack {
   //   return apiClient.post(url, reqBody, options);
   // };
 }
+

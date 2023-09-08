@@ -119,7 +119,7 @@ export default function NavBar() {
                     onClose={() => setAvatarBtnClicked(false)}
                   >
                     <MenuItem>
-                      <Link href={'https://slack.com/openid/connect/authorize?scope=openid%20email%20profile&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Flocalhost%3A8081&amp;client_id=2697222791.5807891074339'}>
+                      <Link href={slack.getOpenIdUrl()}>
                         <Typography textAlign="center">Log in</Typography>
                       </Link>
                     </MenuItem>
