@@ -10,6 +10,7 @@ function Providers({ children }: React.PropsWithChildren) {
 
   return (
     <QueryClientProvider client={client}>
+      {/* TODO: include later */}
       {/* <ReactQueryStreamedHydration> */}
         {children}
       {/* </ReactQueryStreamedHydration> */}
