@@ -1,9 +1,20 @@
-// Move to env
-const BASE_URL = 'https://jsonplaceholder.typicode.com/todos/1';
+import { apiClient } from '@/app/layout';
+import { API_URLS } from './api-url';
+import { setCookie } from 'cookies-next';
 
-export const getTest = async () => {
-  const res = await fetch(BASE_URL, {
-    method: 'GET'
-  })
-  return res.json();
+interface postSignInResponseBody {
+  accessToken: string;
+}
+
+export const postSignIn = async (code: string) => {
+  const res = await apiClient.post<postSignInResponseBody>(API_URLS.signIn, { body: { code } });
+  if (res.accessToken) {
+    setCookie('sessionToken', res.accessToken);
+  }
+  return res;
 };
+
+export const getRooms = async () => {
+  const res = await apiClient.get<any>(API_URLS.room);
+  return res;
+}
