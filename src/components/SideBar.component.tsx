@@ -32,7 +32,7 @@ export default function SideBar() {
 
   return (
     <Stack width={isDrawerCollapsed ? drawerWidth['collaped'] : drawerWidth['open']} position="relative">
-      <Stack position={'absolute'} right={0} top="44px" zIndex={1300} sx={{ transform: 'translateX(50%)' }}>
+      <Stack position={'absolute'} right={0} top="44px" zIndex={1200} sx={{ transform: 'translateX(50%)' }}>
         <IconButton
           color="primary"
           sx={{
@@ -51,6 +51,7 @@ export default function SideBar() {
         </IconButton>
       </Stack>
       <Drawer
+        style={{ zIndex: 1199 }}
         sx={{
           flexShrink: 0,
           transition: 'ease-in 0.3s',
@@ -66,7 +67,7 @@ export default function SideBar() {
         anchor="left"
       >
         <Toolbar />
-        <Divider />
+        {/* <Divider /> */}
         <List>
           {sideBarTabs.map((tab, index) => (
             <ListItem key={tab.displayText} disablePadding>
