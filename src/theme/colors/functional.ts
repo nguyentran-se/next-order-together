@@ -9,5 +9,5 @@ export const functionalColors = {
   warningBg: '#F9E8D9',
   white: '#FFFFFF',
   hover: '#F3FAFF',
-  hoverBg: "#D9F0FF",
+  hoverBg: '#D9F0FF',
 };

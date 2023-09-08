@@ -17,4 +17,4 @@ export const getRoomInfoFromRoomData = (roomData: IRoom) => {
 export const getRoomMenuFromRoomData = (roomData: IRoom) => {
   const tableDetail = getRoomDetailFromRoomData(roomData);
   return tableDetail.menu;
-}
+};

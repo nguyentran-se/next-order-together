@@ -34,11 +34,5 @@ function stringAvatar(name: string) {
 }
 
 export default function Avatar({ name, imgHref }: { name: string; imgHref?: string }) {
-  return (
-    <MuiAvatar
-      alt={name}
-      src={imgHref}
-      {...stringAvatar(name)}
-    />
-  );
+  return <MuiAvatar alt={name} src={imgHref} {...stringAvatar(name)} />;
 }

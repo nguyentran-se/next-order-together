@@ -7,6 +7,6 @@ export const useGetRoom = (id: string) => {
     queryKey: [`get-room-${id}`],
     queryFn: () => getRoom(id),
     retry: 3,
-    staleTime: 1000*5,
+    staleTime: 1000 * 5,
   });
 };

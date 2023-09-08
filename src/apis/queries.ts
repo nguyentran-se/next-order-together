@@ -18,10 +18,10 @@ export const postSignIn = async (code: string) => {
 export const getRooms = async () => {
   const res = await apiClient.get<any>(API_URLS.room);
   return res;
-}
+};
 
 export const getRoom = async (id: string) => {
-  const url = `${API_URLS.room}/${id}`
+  const url = `${API_URLS.room}/${id}`;
   const res = await apiClient.get<IRoom>(url);
   return res;
-}
+};

@@ -37,7 +37,7 @@ const theme = createTheme({
     },
     lightGrey: {
       main: secondary[100],
-    }
+    },
   },
   components: {
     MuiListItemButton: {
@@ -76,10 +76,9 @@ const theme = createTheme({
         root: {
           minWidth: '40px',
         },
-      
       },
     },
-      },
+  },
 });
 
 export default theme;

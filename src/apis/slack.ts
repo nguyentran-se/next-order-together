@@ -59,4 +59,3 @@ export default class Slack {
   //   return apiClient.post(url, reqBody, options);
   // };
 }
-

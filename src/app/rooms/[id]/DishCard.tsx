@@ -27,20 +27,35 @@ function DishCard({ dishInfo }: { dishInfo: IDish }) {
       ></CardMedia>
       <Stack pl={2} direction="column" justifyContent="space-between" flexGrow={1}>
         <Stack direction="row" justifyContent="space-between">
-          <Typography fontWeight="500" paddingRight={1}>{dishInfo.name}</Typography>
+          <Typography fontWeight="500" paddingRight={1}>
+            {dishInfo.name}
+          </Typography>
           <Typography fontWeight="500" color="primary.main">
             {dishInfo.priceV2.amountDisplay}
           </Typography>
         </Stack>
         <Stack direction="row-reverse">
-          <ButtonGroup color='lightGrey' disableElevation variant="contained" aria-label="Disabled elevation buttons" sx={{
-            alignItems: 'center',
-            '& .MuiButton-root': {
-              padding: 0,
-              minWidth: 30
-            }}}>
+          <ButtonGroup
+            color="lightGrey"
+            disableElevation
+            variant="contained"
+            aria-label="Disabled elevation buttons"
+            sx={{
+              alignItems: 'center',
+              '& .MuiButton-root': {
+                padding: 0,
+                minWidth: 30,
+              },
+            }}
+          >
             <Button style={{ border: 0 }}>-</Button>
-            <Typography bgcolor={theme.palette.lightGrey.main} sx={{ padding: '0 5px', height: '100%', minWidth: 30, textAlign: 'center' }} component='div'>0</Typography>
+            <Typography
+              bgcolor={theme.palette.lightGrey.main}
+              sx={{ padding: '0 5px', height: '100%', minWidth: 30, textAlign: 'center' }}
+              component="div"
+            >
+              0
+            </Typography>
             <Button>+</Button>
           </ButtonGroup>
         </Stack>

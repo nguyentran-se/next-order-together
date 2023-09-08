@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <ContentArea>
                       {/* TODO: include later */}
                       {/* <Suspense fallback={<p style={{ textAlign: 'center' }}>loading... on initial request</p>}> */}
-                        {children}
+                      {children}
                       {/* </Suspense> */}
                     </ContentArea>
                   </Stack>

@@ -30,7 +30,11 @@ function Room() {
           pt: 2,
         }}
       >
-        {isLoading && <Box textAlign='center'><CircularProgress /></Box>}
+        {isLoading && (
+          <Box textAlign="center">
+            <CircularProgress />
+          </Box>
+        )}
         {!isLoading && isFetching && <>Fetching ...</>}
         {!isLoading &&
           (!_.isEmpty(data) ? (

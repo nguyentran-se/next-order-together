@@ -32,7 +32,11 @@ export default function WaitingRoom() {
             </Box>
           </Stack>
         </Box>
-        {isLoading && <Box textAlign='center'><CircularProgress /></Box>}
+        {isLoading && (
+          <Box textAlign="center">
+            <CircularProgress />
+          </Box>
+        )}
         {!isLoading && isFetching && <>Fetching ...</>}
         {!isLoading && (
           <Box>
@@ -41,7 +45,9 @@ export default function WaitingRoom() {
                 data.map((item, index) => {
                   return (
                     <Grid key={index} item xs={6} md={4}>
-                      <Link href={`rooms/${item.id}`}><RoomCard key={index} table={item}/></Link>
+                      <Link href={`rooms/${item.id}`}>
+                        <RoomCard key={index} table={item} />
+                      </Link>
                     </Grid>
                   );
                 })}

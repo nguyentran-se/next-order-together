@@ -38,7 +38,7 @@ function RoomCard({ table }: { table: IRoom }) {
         height: 340,
         width: 390,
         position: 'relative',
-        boxShadow: '0px 8px 10px 3px rgba(0,0,0,0.1)'
+        boxShadow: '0px 8px 10px 3px rgba(0,0,0,0.1)',
       }}
     >
       <Typography sx={HostNameStyles}>{roomInfo.hostName}</Typography>
@@ -48,7 +48,7 @@ function RoomCard({ table }: { table: IRoom }) {
           {roomInfo.roomName}
         </Typography>
         <Stack direction="row" justifyContent="space-between">
-          <Typography variant="body2" display='flex' alignItems='center'>
+          <Typography variant="body2" display="flex" alignItems="center">
             <Typography color="text.secondary" component="span" mr={1}>
               <TimerIcon />
             </Typography>{' '}

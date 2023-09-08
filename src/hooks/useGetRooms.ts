@@ -9,6 +9,6 @@ export const useGetRooms = () => {
     // TODO: include later
     // suspense: true,
     retry: 3,
-    staleTime: 1000*5,
+    staleTime: 1000 * 5,
   });
 };

@@ -32,11 +32,5 @@ export default function Dashboard() {
     }
   }, [code]);
 
-  return (
-    <>
-      Dashboard
-      <a href={`${slack.getOpenIdUrl()}`}>Add to Slack</a>
-    </>
-  );
+  return <>Dashboard</>;
 }
-
