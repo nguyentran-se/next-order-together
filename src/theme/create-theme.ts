@@ -35,6 +35,9 @@ const theme = createTheme({
     warningBg: {
       main: functionalColors['warningBg'],
     },
+    lightGrey: {
+      main: secondary[100],
+    }
   },
   components: {
     MuiListItemButton: {
@@ -76,7 +79,7 @@ const theme = createTheme({
       
       },
     },
-  },
+      },
 });
 
 export default theme;

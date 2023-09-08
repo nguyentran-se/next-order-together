@@ -13,3 +13,8 @@ export const getRoomInfoFromRoomData = (roomData: IRoom) => {
     photoHref: tableDetail.photoHref,
   };
 };
+
+export const getRoomMenuFromRoomData = (roomData: IRoom) => {
+  const tableDetail = getRoomDetailFromRoomData(roomData);
+  return tableDetail.menu;
+}

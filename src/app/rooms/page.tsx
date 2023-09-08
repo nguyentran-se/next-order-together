@@ -1,7 +1,7 @@
 'use client';
 
 import { useGetRooms } from '@/hooks/useGetRooms';
-import { Box, Button, Container, Grid, Icon, Stack, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Container, Grid, Icon, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Link from 'next/link';
 import { Suspense, useEffect } from 'react';
@@ -18,7 +18,7 @@ export default function WaitingRoom() {
 
   return (
     <>
-      <Container maxWidth="xl" sx={{ pt: 2 }}>
+      <Container maxWidth={false} sx={{ pt: 2 }}>
         <Box paddingBottom={4}>
           <Stack direction="row" justifyContent="space-between">
             <Box>
@@ -32,16 +32,16 @@ export default function WaitingRoom() {
             </Box>
           </Stack>
         </Box>
-        {isLoading && <Box textAlign="center">...loading</Box>}
+        {isLoading && <Box textAlign='center'><CircularProgress /></Box>}
+        {!isLoading && isFetching && <>Fetching ...</>}
         {!isLoading && (
           <Box>
-            {isFetching && '...fetching'}
             <Grid container spacing={6}>
               {!!data &&
                 data.map((item, index) => {
                   return (
                     <Grid key={index} item xs={6} md={4}>
-                      <Link href={''}><RoomCard key={index} table={item}/></Link>
+                      <Link href={`rooms/${item.id}`}><RoomCard key={index} table={item}/></Link>
                     </Grid>
                   );
                 })}
