@@ -1,5 +1,3 @@
-'use client';
-
 import ContentArea from '@/components/ContentArea.component';
 import NavBar from '@/components/NavBar.component.';
 import SideBar from '@/components/SideBar.component';
@@ -8,6 +6,7 @@ import { Stack } from '@mui/material';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import Providers from '@/utils/provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,19 +21,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head></head>
       <body className={inter.className}>
         <ThemeRegistry>
-          <main>
-            <Stack direction="row">
-              <SideBar></SideBar>
-              <Stack component="main" flexDirection="column" width="full" sx={{ flexGrow: 1 }}>
-                <Stack>
-                  <NavBar></NavBar>
-                </Stack>
-                <Stack>
-                  <ContentArea>{children}</ContentArea>
+          <Providers>
+            <main>
+              <Stack direction="row">
+                <SideBar></SideBar>
+                <Stack component="main" flexDirection="column" width="full" sx={{ flexGrow: 1 }}>
+                  <Stack>
+                    <NavBar></NavBar>
+                  </Stack>
+                  <Stack>
+                    <ContentArea>{children}</ContentArea>
+                  </Stack>
                 </Stack>
               </Stack>
-            </Stack>
-          </main>
+            </main>
+          </Providers>
         </ThemeRegistry>
       </body>
     </html>
