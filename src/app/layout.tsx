@@ -1,15 +1,14 @@
-import ContentArea from '@/components/ContentArea.component';
-import NavBar from '@/components/NavBar.component.';
-import SideBar from '@/components/SideBar.component';
-import ThemeRegistry from '@/theme/ThemeRegistry';
-import { Stack } from '@mui/material';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import Providers from '@/utils/provider';
 import { ApiClient } from '@/apis/api-client';
 import Slack from '@/apis/slack';
-import { Suspense } from 'react';
+import ContentArea from '@/components/ContentArea.component';
+import NavBar from '@/components/NavBar.component.';
+import Redirecting from '@/components/Redirecting';
+import SideBar from '@/components/SideBar.component';
+import ThemeRegistry from '@/theme/ThemeRegistry';
+import Providers from '@/utils/provider';
+import { Stack } from '@mui/material';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <ThemeRegistry>
           <Providers>
+            <Redirecting>
             <main>
               <Stack direction="row">
                 <SideBar></SideBar>
@@ -43,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Stack>
               </Stack>
             </main>
+            </Redirecting>
           </Providers>
         </ThemeRegistry>
       </body>

@@ -20,12 +20,13 @@ import {
   useTheme,
 } from '@mui/material';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React, { useState, useRef } from 'react';
 
 export default function NavBar() {
   const pathName = usePathname();
   const theme = useTheme();
+  const router = useRouter();
   const [isOrderDrawerOpened, setOrderDrawerOpened] = useState(false);
   const [isAvatarBtnClicked, setAvatarBtnClicked] = useState(false);
   const avatarBtnRef = useRef<HTMLButtonElement>(null);
@@ -37,9 +38,10 @@ export default function NavBar() {
     setOrderDrawerOpened(open);
   };
 
-  const clickAvatar = async () => {
-    setAvatarBtnClicked(true);
-    // const connect = slac
+  const clickAvatar = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    localStorage.setItem('prevPath', pathName);
+    router.push(slack.getOpenIdUrl());
   };
 
   const page = sideBarTabs.find((tab) => tab.url === pathName)?.displayText;
@@ -119,7 +121,7 @@ export default function NavBar() {
                     onClose={() => setAvatarBtnClicked(false)}
                   >
                     <MenuItem>
-                      <Link href={slack.getOpenIdUrl()}>
+                      <Link href='' onClick={clickAvatar}>
                         <Typography textAlign="center">Log in</Typography>
                       </Link>
                     </MenuItem>

@@ -14,7 +14,7 @@ import RoomInfo from './RoomInfo';
 function Room() {
   const params = useParams();
   const id = _.isArray(params.id) ? params.id[0] : params.id;
-  const { data, isFetching, isLoading } = useGetRoom(id);
+  const { data, isFetching, isLoading, isError } = useGetRoom(id);
 
   useEffect(() => {
     console.log('data :>> ', data);
@@ -23,7 +23,7 @@ function Room() {
   }, [data, isFetching, isLoading]);
 
   return (
-    <>
+    <>{!isError &&
       <Container
         maxWidth={false}
         sx={{
@@ -56,7 +56,8 @@ function Room() {
           ) : (
             <Typography>Failed to get room info</Typography>
           ))}
-      </Container>
+      </Container>}
+      {isError && <Typography>Failed to get room info</Typography>}
     </>
   );
 }
