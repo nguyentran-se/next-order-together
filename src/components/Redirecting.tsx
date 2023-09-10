@@ -4,15 +4,14 @@ import { PAGE_PATH } from '@/constants';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-import { postSignIn } from '@/apis/queries';
+import { postSignIn } from '@/queries/query-fn';
 import LoadingScreen from '@/app/_common/LoadingScreen';
-import { useToast } from '@/hooks/useToast'; 
+import { toast } from 'react-toastify';
 
 function Redirecting({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const toast = useToast();
   const code = searchParams.get('code');
 
   const isLoggingin = pathname === PAGE_PATH.HOME && !!code;
@@ -22,7 +21,7 @@ function Redirecting({ children }: { children: React.ReactNode }) {
       // TODO: replace this with useUser hook later
       postSignIn(code)
         .catch((err) => {
-          toast('error', 'Failed to sign in')
+          toast.error('Failed to sign in')
           console.log('err :>> ', err);
         })
         .finally(() => {

@@ -35,14 +35,25 @@ function RoomCard({ table }: { table: IRoom }) {
     <Card
       // elevation={5}
       sx={{
-        height: 340,
-        width: 390,
+        maxWidth: '390px',
         position: 'relative',
         boxShadow: '0px 8px 10px 3px rgba(0,0,0,0.1)',
       }}
     >
       <Typography sx={HostNameStyles}>{roomInfo.hostName}</Typography>
-      <CardMedia component="img" alt="green iguana" height="260" image={roomInfo.photoHref} />
+      <CardMedia
+        component="img"
+        alt="green iguana"
+        sx={{
+          height: {
+            xs: '15px',
+            sm: '260px',
+            md: '340px',
+          },
+          objectFit: 'cover',
+        }}
+        image={roomInfo.photoHref}
+      />
       <CardContent sx={{ padding: '10px 15px' }}>
         <Typography className="nowrap-text" gutterBottom fontSize={'18px'} fontWeight="500" component="div">
           {roomInfo.roomName}

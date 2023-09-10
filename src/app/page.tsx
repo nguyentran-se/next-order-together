@@ -1,6 +1,6 @@
 'use client';
 
-import { postSignIn } from '@/apis/queries';
+import { postSignIn } from '@/queries/query-fn';
 import { Metadata } from 'next';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
