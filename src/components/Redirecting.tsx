@@ -1,36 +1,19 @@
 'use client';
 
 import { PAGE_PATH } from '@/constants';
-import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 import { postSignIn } from '@/apis/queries';
-import { Box } from '@mui/material';
-
-const styles = {
-  '@keyframes sparkle': {
-    '0%, 100%': {
-      opacity: 0.5
-    },
-    '50%': {
-      opacity: 1
-    },
-  },
-
-  animation: 'sparkle 1s ease-in-out infinite',
-};
+import LoadingScreen from '@/app/_common/LoadingScreen';
+import { useToast } from '@/hooks/useToast'; 
 
 function Redirecting({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const toast = useToast();
   const code = searchParams.get('code');
-
-  const __DEVMODE__ = process.env.NODE_ENV === 'development';
-  const fixedSrc =
-    'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Fwc3NzYjY4cHVwajl2OHk3a3JqbndrZjI5ZzFpZ29yaHY3c2tuaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZBQhoZC0nqknSviPqT/giphy.gif';
-  const loadingSrc = __DEVMODE__ ? fixedSrc : '/giphy.gif';
 
   const isLoggingin = pathname === PAGE_PATH.HOME && !!code;
 
@@ -39,6 +22,7 @@ function Redirecting({ children }: { children: React.ReactNode }) {
       // TODO: replace this with useUser hook later
       postSignIn(code)
         .catch((err) => {
+          toast('error', 'Failed to sign in')
           console.log('err :>> ', err);
         })
         .finally(() => {
@@ -48,17 +32,7 @@ function Redirecting({ children }: { children: React.ReactNode }) {
     }
   }, [isLoggingin]);
 
-  return (
-    <>
-      {isLoggingin ? (
-        <Box sx={styles}>
-          <Image src={loadingSrc} fill alt="Loading" />
-        </Box>
-      ) : (
-        <>{children}</>
-      )}
-    </>
-  );
+  return <>{isLoggingin ? <LoadingScreen /> : <>{children}</>}</>;
 }
 
 export default Redirecting;

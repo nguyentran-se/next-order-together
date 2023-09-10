@@ -1,6 +1,6 @@
 'use client';
 
-import { apiClient, slack } from '@/app/layout';
+import { slack } from '@/app/layout';
 import { sideBarTabs } from '@/constants';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
@@ -19,9 +19,8 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
-import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 export default function NavBar() {
   const pathName = usePathname();
@@ -39,7 +38,6 @@ export default function NavBar() {
   };
 
   const clickAvatar = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
     localStorage.setItem('prevPath', pathName);
     router.push(slack.getOpenIdUrl());
   };
@@ -120,10 +118,8 @@ export default function NavBar() {
                     open={isAvatarBtnClicked}
                     onClose={() => setAvatarBtnClicked(false)}
                   >
-                    <MenuItem>
-                      <Link href='' onClick={clickAvatar}>
+                    <MenuItem onClick={clickAvatar}>
                         <Typography textAlign="center">Log in</Typography>
-                      </Link>
                     </MenuItem>
                     <MenuItem>
                       <Typography textAlign="center">Setting</Typography>
