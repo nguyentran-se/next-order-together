@@ -1,6 +1,6 @@
 'use client';
 
-import { useGetRooms } from '@/queries/useGetRooms'; 
+import { useGetRooms } from '@/queries/useGetRooms';
 import AddIcon from '@mui/icons-material/Add';
 import { Box, Button, CircularProgress, Container, Grid, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
@@ -18,7 +18,7 @@ export default function WaitingRoom() {
 
   return (
     <>
-      {isLoggedin &&!isError && (
+      {isLoggedin && !isError && (
         <Container maxWidth={false} sx={{ pt: 2 }}>
           <Box paddingBottom={4}>
             <Stack direction="row" justifyContent="space-between">
@@ -45,7 +45,7 @@ export default function WaitingRoom() {
                 {!!data &&
                   data.map((item, index) => {
                     return (
-                      <Grid key={index} item xs={6} md={4} lg={3} >
+                      <Grid key={index} item xs={6} md={4} lg={3}>
                         <Link href={`rooms/${item.id}`}>
                           <RoomCard key={index} table={item} />
                         </Link>

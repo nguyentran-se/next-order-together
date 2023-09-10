@@ -23,40 +23,42 @@ function Room() {
   }, [data, isFetching, isLoading]);
 
   return (
-    <>{!isError &&
-      <Container
-        maxWidth={false}
-        sx={{
-          pt: 2,
-        }}
-      >
-        {isLoading && (
-          <Box textAlign="center">
-            <CircularProgress />
-          </Box>
-        )}
-        {!isLoading && isFetching && <>Fetching ...</>}
-        {!isLoading &&
-          (!_.isEmpty(data) ? (
-            <Stack direction="column">
-              {/*  */}
-              <Stack direction="row" justifyContent="space-between">
-                <Stack>
-                  <RoomInfo roomInfo={data}></RoomInfo>
+    <>
+      {!isError && (
+        <Container
+          maxWidth={false}
+          sx={{
+            pt: 2,
+          }}
+        >
+          {isLoading && (
+            <Box textAlign="center">
+              <CircularProgress />
+            </Box>
+          )}
+          {!isLoading && isFetching && <>Fetching ...</>}
+          {!isLoading &&
+            (!_.isEmpty(data) ? (
+              <Stack direction="column">
+                {/*  */}
+                <Stack direction="row" justifyContent="space-between">
+                  <Stack>
+                    <RoomInfo roomInfo={data}></RoomInfo>
+                  </Stack>
+                  <Stack>
+                    <HostInfo hostInfo={data.host}></HostInfo>
+                  </Stack>
                 </Stack>
-                <Stack>
-                  <HostInfo hostInfo={data.host}></HostInfo>
-                </Stack>
+                <Spacer size={2}></Spacer>
+                <Box>
+                  <Menu menu={getRoomMenuFromRoomData(data)}></Menu>
+                </Box>
               </Stack>
-              <Spacer size={2}></Spacer>
-              <Box>
-                <Menu menu={getRoomMenuFromRoomData(data)}></Menu>
-              </Box>
-            </Stack>
-          ) : (
-            <Typography>Failed to get room info</Typography>
-          ))}
-      </Container>}
+            ) : (
+              <Typography>Failed to get room info</Typography>
+            ))}
+        </Container>
+      )}
       {isError && <Typography>Failed to get room info</Typography>}
     </>
   );

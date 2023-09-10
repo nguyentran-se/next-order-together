@@ -25,7 +25,7 @@ export default function SideBar() {
   const theme = useTheme();
   const pathName = usePathname();
   const router = useRouter();
-  const mainPath = ('/' + pathName.split('/')[1]) || '';
+  const mainPath = '/' + pathName.split('/')[1] || '';
 
   const handleTabClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, path: string) => {
     event.preventDefault();

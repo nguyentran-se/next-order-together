@@ -21,7 +21,7 @@ function Redirecting({ children }: { children: React.ReactNode }) {
       // TODO: replace this with useUser hook later
       postSignIn(code)
         .catch((err) => {
-          toast.error('Failed to sign in')
+          toast.error('Failed to sign in');
           console.log('err :>> ', err);
         })
         .finally(() => {

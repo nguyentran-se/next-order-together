@@ -1,18 +1,18 @@
-'use client'
- 
-import { useEffect } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
- 
+'use client';
+
+import { useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+
 export function NavigationEvents() {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
- 
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   useEffect(() => {
-    const url = `${pathname}?${searchParams}`
-    console.log(url)
+    const url = `${pathname}?${searchParams}`;
+    console.log(url);
     // You can now use the current URL
     // ...
-  }, [pathname, searchParams])
- 
-  return null
+  }, [pathname, searchParams]);
+
+  return null;
 }

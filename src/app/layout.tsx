@@ -14,10 +14,10 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Order together',
-  description: `Let's order together`,
-};
+// export const metadata: Metadata = {
+//   title: 'Order together',
+//   description: `Let's order together`,
+// };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

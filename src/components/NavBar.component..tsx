@@ -119,7 +119,7 @@ export default function NavBar() {
                     onClose={() => setAvatarBtnClicked(false)}
                   >
                     <MenuItem onClick={clickAvatar}>
-                        <Typography textAlign="center">Log in</Typography>
+                      <Typography textAlign="center">Log in</Typography>
                     </MenuItem>
                     <MenuItem>
                       <Typography textAlign="center">Setting</Typography>

@@ -8,7 +8,7 @@ interface postSignInResponseBody {
 }
 
 /**
- * @param code 
+ * @param code
  * @description to get access token
  * @returns postSignInResponseBody
  */

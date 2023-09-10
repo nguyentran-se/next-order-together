@@ -9,8 +9,8 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['localhost:8081', 'media0.giphy.com',],
+    domains: ['localhost:8081', 'media0.giphy.com'],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
