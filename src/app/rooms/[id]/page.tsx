@@ -1,7 +1,7 @@
 'use client';
 
 import Spacer from '@/app/_common/Spacer';
-import { useGetRoom } from '@/hooks/useGetRoom';
+import { useGetRoom } from '@/queries/useGetRoom';
 import { Box, CircularProgress, Container, Stack, Typography } from '@mui/material';
 import _ from 'lodash';
 import { useParams } from 'next/navigation';
