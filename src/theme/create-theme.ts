@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material/styles';
 import { primary } from './colors/primary';
 import { secondary } from './colors/secondary';
 import { functionalColors } from './colors/functional';
+import { common } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
@@ -40,6 +41,13 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiAppBar: {
+      styleOverrides: {
+        colorPrimary: {
+          background: common.white
+        }
+      }
+    },
     MuiListItemButton: {
       styleOverrides: {
         root: {
@@ -78,6 +86,26 @@ const theme = createTheme({
         },
       },
     },
+    MuiModal: {
+      defaultProps: {
+        slotProps: {
+          backdrop: {
+            style: {
+              opacity: 0.3
+            }
+          }
+        }
+      }
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          '& .MuiFormLabel-asterisk': {
+            color: functionalColors['error']
+          }
+        }
+      }
+    }
   },
 });
 

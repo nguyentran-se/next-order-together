@@ -2,22 +2,37 @@
 
 import { useGetRooms } from '@/queries/useGetRooms';
 import AddIcon from '@mui/icons-material/Add';
-import { Box, Button, CircularProgress, Container, Grid, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  Stack,
+  Typography
+} from '@mui/material';
+import * as nextCookie from 'cookies-next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import CreateRoomModal from './CreateRoomModal';
 import RoomCard from './RoomCard.component';
-import * as nextCookie from 'cookies-next';
+
 
 export default function WaitingRoom() {
-  const { isLoading, isFetching, data, isError, failureReason } = useGetRooms();
+  const { isLoading, isFetching, data, isError } = useGetRooms();
+  const [isCreateRoomModalOpened, setCreateRoomModalOpened] = useState(false);
   const [isLoggedin, setLoggedin] = useState(false);
   useEffect(() => {
     const hasBearerToken = nextCookie.hasCookie('sessionToken');
     setLoggedin(hasBearerToken);
   }, []);
 
+  const openCreateRoomModal = () => setCreateRoomModalOpened(true);
+  const closeCreateRoomModal = () => setCreateRoomModalOpened(false);
+
   return (
     <>
+      <CreateRoomModal open={isCreateRoomModalOpened} onClose={closeCreateRoomModal}/>
       {isLoggedin && !isError && (
         <Container maxWidth={false} sx={{ pt: 2 }}>
           <Box paddingBottom={4}>
@@ -26,7 +41,7 @@ export default function WaitingRoom() {
                 <Typography variant="h4">{`Today's Options`}</Typography>
               </Box>
               <Box>
-                <Button variant="contained">
+                <Button variant="contained" onClick={openCreateRoomModal}>
                   <Typography>Create new meal</Typography>
                   <AddIcon />
                 </Button>

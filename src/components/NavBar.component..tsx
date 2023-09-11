@@ -63,7 +63,7 @@ export default function NavBar() {
           </Container>
         </Drawer>
       </React.Fragment>
-      <AppBar position="static" enableColorOnDark color={'transparent'} elevation={0}>
+      <AppBar variant='outlined' position="fixed" color='primary' enableColorOnDark elevation={0}>
         <Container maxWidth={false}>
           <Toolbar disableGutters>
             <Stack flexDirection="row" justifyContent="space-between" width="100%" alignItems="center">
@@ -116,6 +116,7 @@ export default function NavBar() {
                       horizontal: 'right',
                     }}
                     open={isAvatarBtnClicked}
+                    disableScrollLock={true}
                     onClose={() => setAvatarBtnClicked(false)}
                   >
                     <MenuItem onClick={clickAvatar}>

@@ -6,6 +6,7 @@ export default function ContentArea({ children }: { children: React.ReactNode })
     <Container
       maxWidth={false}
       sx={{
+        mt: '70px',
         paddingTop: '10px',
       }}
     >
