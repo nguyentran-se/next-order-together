@@ -6,7 +6,7 @@ import { CircularProgress, Divider, IconButton, Menu, MenuItem, Tooltip, Typogra
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-function AvatarButton() {
+function NavBarProfile() {
   const [isAvatarBtnClicked, setAvatarBtnClicked] = useState(false);
   const [isProfileLoading, setProfileLoading] = useState(false);
   const router = useRouter();
@@ -19,6 +19,10 @@ function AvatarButton() {
   const clickAvatar = (e: React.MouseEvent<HTMLElement>) => {
     localStorage.setItem('prevPath', pathName);
     router.push(slack.getOpenIdUrl());
+  };
+
+  const onLogout = () => {
+    
   };
 
   useEffect(() => {
@@ -43,7 +47,7 @@ function AvatarButton() {
         sx={{
           mt: '45px',
           '& .MuiPaper-root': {
-            padding: '0 10px',
+            padding: '0 15px',
           },
         }}
         id="menu-appbar"
@@ -84,4 +88,4 @@ function AvatarButton() {
   );
 }
 
-export default AvatarButton;
+export default NavBarProfile;

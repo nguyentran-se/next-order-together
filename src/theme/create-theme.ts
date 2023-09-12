@@ -44,9 +44,14 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         colorPrimary: {
-          background: common.white
-        }
-      }
+          background: common.white,
+        },
+        root: {
+          transition: 'ease-in-out 0.15s',
+          border: 0,
+          borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+        },
+      },
     },
     MuiListItemButton: {
       styleOverrides: {
@@ -91,21 +96,21 @@ const theme = createTheme({
         slotProps: {
           backdrop: {
             style: {
-              opacity: 0.3
-            }
-          }
-        }
-      }
+              opacity: 0.3,
+            },
+          },
+        },
+      },
     },
     MuiInputLabel: {
       styleOverrides: {
         root: {
           '& .MuiFormLabel-asterisk': {
-            color: functionalColors['error']
-          }
-        }
-      }
-    }
+            color: functionalColors['error'],
+          },
+        },
+      },
+    },
   },
 });
 

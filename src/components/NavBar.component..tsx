@@ -2,25 +2,17 @@
 
 import { sideBarTabs } from '@/constants';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {
-  AppBar,
-  Box,
-  Container,
-  Divider,
-  Drawer,
-  IconButton,
-  Stack,
-  Toolbar,
-  Typography,
-  useTheme
-} from '@mui/material';
+import { AppBar, Box, Container, Divider, Drawer, IconButton, Stack, Toolbar, Typography, useTheme } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
-import AvatarButton from './AvatarButton';
+import NavBarProfile from './NavBarProfile';
+import { drawerWidth } from '@/theme/sizes/drawer';
+import { useSidebarStore } from '@/hooks/useSidebarStore';
 
 export default function NavBar() {
   const pathName = usePathname();
   const theme = useTheme();
+  const isDrawerCollapsed = useSidebarStore((state) => state.isCollapsed);
   const [isOrderDrawerOpened, setOrderDrawerOpened] = useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -51,7 +43,17 @@ export default function NavBar() {
           </Container>
         </Drawer>
       </React.Fragment>
-      <AppBar variant="outlined" position="fixed" color="primary" enableColorOnDark elevation={0}>
+      <AppBar
+        variant="outlined"
+        position="fixed"
+        color="primary"
+        enableColorOnDark
+        elevation={0}
+        sx={{
+          width: `calc(100% - ${isDrawerCollapsed ? drawerWidth['collaped'] : drawerWidth['open']})`,
+ 
+        }}
+      >
         <Container maxWidth={false}>
           <Toolbar disableGutters>
             <Stack flexDirection="row" justifyContent="space-between" width="100%" alignItems="center">
@@ -84,7 +86,7 @@ export default function NavBar() {
                 </Box>
 
                 <Box sx={{ flexGrow: 0 }}>
-                  <AvatarButton />
+                  <NavBarProfile />
                 </Box>
               </Stack>
             </Stack>
