@@ -1,45 +1,33 @@
 'use client';
 
-import { slack } from '@/app/layout';
 import { sideBarTabs } from '@/constants';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
   AppBar,
-  Avatar,
   Box,
   Container,
   Divider,
   Drawer,
   IconButton,
-  Menu,
-  MenuItem,
   Stack,
   Toolbar,
-  Tooltip,
   Typography,
-  useTheme,
+  useTheme
 } from '@mui/material';
-import { usePathname, useRouter } from 'next/navigation';
-import React, { useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
+import AvatarButton from './AvatarButton';
 
 export default function NavBar() {
   const pathName = usePathname();
   const theme = useTheme();
-  const router = useRouter();
   const [isOrderDrawerOpened, setOrderDrawerOpened] = useState(false);
-  const [isAvatarBtnClicked, setAvatarBtnClicked] = useState(false);
-  const avatarBtnRef = useRef<HTMLButtonElement>(null);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
       return;
     }
     setOrderDrawerOpened(open);
-  };
-
-  const clickAvatar = (e: React.MouseEvent<HTMLElement>) => {
-    localStorage.setItem('prevPath', pathName);
-    router.push(slack.getOpenIdUrl());
   };
 
   const page = sideBarTabs.find((tab) => tab.url === pathName)?.displayText;
@@ -63,7 +51,7 @@ export default function NavBar() {
           </Container>
         </Drawer>
       </React.Fragment>
-      <AppBar variant='outlined' position="fixed" color='primary' enableColorOnDark elevation={0}>
+      <AppBar variant="outlined" position="fixed" color="primary" enableColorOnDark elevation={0}>
         <Container maxWidth={false}>
           <Toolbar disableGutters>
             <Stack flexDirection="row" justifyContent="space-between" width="100%" alignItems="center">
@@ -96,40 +84,7 @@ export default function NavBar() {
                 </Box>
 
                 <Box sx={{ flexGrow: 0 }}>
-                  <Tooltip title="Open settings">
-                    <IconButton ref={avatarBtnRef} sx={{ p: 0 }} onClick={() => setAvatarBtnClicked(true)}>
-                      <Avatar alt="Remy Sharp" />
-                    </IconButton>
-                  </Tooltip>
-                  <Menu
-                    style={{ padding: '0 10px' }}
-                    sx={{ mt: '45px' }}
-                    id="menu-appbar"
-                    anchorEl={avatarBtnRef.current}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={isAvatarBtnClicked}
-                    disableScrollLock={true}
-                    onClose={() => setAvatarBtnClicked(false)}
-                  >
-                    <MenuItem onClick={clickAvatar}>
-                      <Typography textAlign="center">Log in</Typography>
-                    </MenuItem>
-                    <MenuItem>
-                      <Typography textAlign="center">Setting</Typography>
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem>
-                      <Typography textAlign="center">Log out</Typography>
-                    </MenuItem>
-                  </Menu>
+                  <AvatarButton />
                 </Box>
               </Stack>
             </Stack>

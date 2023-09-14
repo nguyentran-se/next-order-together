@@ -33,6 +33,6 @@ function stringAvatar(name: string) {
   };
 }
 
-export default function Avatar({ name, imgHref }: { name: string; imgHref?: string }) {
-  return <MuiAvatar alt={name} src={imgHref} {...stringAvatar(name)} />;
+export default function Avatar({ name, src }: { name: string, src?: string }) {
+  return <MuiAvatar alt={name} src={src} {...stringAvatar(name)} />;
 }
