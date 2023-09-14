@@ -2,6 +2,7 @@ import { apiClient } from '@/app/layout';
 import { API_URLS } from '../apis/api-url';
 import { setCookie } from 'cookies-next';
 import { IRoom } from '@/app/_interfaces';
+import { IProfile } from '@/app/_interfaces/profile.interface';
 
 interface postSignInResponseBody {
   accessToken: string;
@@ -39,3 +40,10 @@ export const getRoom = async (id: string) => {
   const res = await apiClient.get<IRoom>(url);
   return res;
 };
+
+/**--------------------User----------------------*/
+export const getUser = async () => {
+  const url = `${API_URLS.profile}/me`;
+  const res = await apiClient.get<IProfile>(url);
+  return res;
+}

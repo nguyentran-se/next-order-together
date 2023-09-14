@@ -18,3 +18,9 @@ declare module '@mui/material/ButtonGroup' {
     lightGrey: true;
   }
 }
+
+declare module '@mui/material/MuiAppBar' {
+  interface AppBarPropsColorOverrides {
+    white: true
+  }
+}

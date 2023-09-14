@@ -2,22 +2,28 @@
 
 import { useGetRooms } from '@/queries/useGetRooms';
 import AddIcon from '@mui/icons-material/Add';
-import { Box, Button, CircularProgress, Container, Grid, Stack, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Container, Grid, LinearProgress, Stack, Typography, keyframes } from '@mui/material';
+import * as nextCookie from 'cookies-next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import CreateRoomModal from './CreateRoomModal';
 import RoomCard from './RoomCard.component';
-import * as nextCookie from 'cookies-next';
 
 export default function WaitingRoom() {
-  const { isLoading, isFetching, data, isError, failureReason } = useGetRooms();
+  const { isLoading, isFetching, rooms, isError } = useGetRooms();
+  const [isCreateRoomModalOpened, setCreateRoomModalOpened] = useState(false);
   const [isLoggedin, setLoggedin] = useState(false);
   useEffect(() => {
     const hasBearerToken = nextCookie.hasCookie('sessionToken');
     setLoggedin(hasBearerToken);
   }, []);
 
+  const openCreateRoomModal = () => setCreateRoomModalOpened(true);
+  const closeCreateRoomModal = () => setCreateRoomModalOpened(false);
+
   return (
     <>
+      <CreateRoomModal open={isCreateRoomModalOpened} onClose={closeCreateRoomModal} />
       {isLoggedin && !isError && (
         <Container maxWidth={false} sx={{ pt: 2 }}>
           <Box paddingBottom={4}>
@@ -26,9 +32,19 @@ export default function WaitingRoom() {
                 <Typography variant="h4">{`Today's Options`}</Typography>
               </Box>
               <Box>
-                <Button variant="contained">
-                  <Typography>Create new meal</Typography>
-                  <AddIcon />
+                <Button
+                  variant="contained"
+                  onClick={openCreateRoomModal}
+                  disableElevation
+                  endIcon={
+                    <AddIcon
+                      sx={{
+                        transform: 'translateY(-1px)',
+                      }}
+                    />
+                  }
+                >
+                  Create new meal
                 </Button>
               </Box>
             </Stack>
@@ -38,12 +54,13 @@ export default function WaitingRoom() {
               <CircularProgress />
             </Box>
           )}
-          {!isLoading && isFetching && <>Fetching ...</>}
+
+          {!isLoading && isFetching && <LinearProgress />}
           {!isLoading && (
             <Box>
               <Grid container spacing={6}>
-                {!!data &&
-                  data.map((item, index) => {
+                {!!rooms &&
+                  rooms.map((item, index) => {
                     return (
                       <Grid key={index} item xs={6} md={4} lg={3}>
                         <Link href={`rooms/${item.id}`}>

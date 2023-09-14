@@ -4,7 +4,7 @@ import { getIsLoggedin } from '@/utils/getIsLoggedin';
 import { useQuery } from '@tanstack/react-query';
 
 export const useGetRooms = () => {
-  return useQuery<IRoom[]>({
+  const { data, isLoading, isFetching, isError } = useQuery<IRoom[]>({
     queryKey: ['get-rooms'],
     queryFn: getRooms,
     // TODO: include later
@@ -13,4 +13,10 @@ export const useGetRooms = () => {
     staleTime: 1000 * 5,
     enabled: getIsLoggedin(),
   });
+  return {
+    rooms: data,
+    isLoading,
+    isFetching,
+    isError,
+  };
 };

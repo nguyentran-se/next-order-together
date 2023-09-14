@@ -1,6 +1,7 @@
 'use client';
 
 import { sideBarTabs } from '@/constants';
+import { useSidebarStore } from '@/hooks/useSidebarStore';
 import { functionalColors } from '@/theme/colors/functional';
 import { drawerWidth } from '@/theme/sizes/drawer';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
@@ -21,7 +22,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function SideBar() {
-  const [isDrawerCollapsed, setDrawerCollapsed] = useState(false);
+  const isDrawerCollapsed = useSidebarStore((state) => state.isCollapsed);
+  const setDrawerCollapsed = useSidebarStore((state) => state.setIsCollapsed);
+  // const [isDrawerCollapsed, setDrawerCollapsed] = useState(false);
   const theme = useTheme();
   const pathName = usePathname();
   const router = useRouter();
@@ -60,7 +63,7 @@ export default function SideBar() {
             borderRadius: '50%',
             bgcolor: `${theme.palette.grey[100]}`,
           }}
-          onClick={() => setDrawerCollapsed((prev) => !prev)}
+          onClick={() => setDrawerCollapsed(!isDrawerCollapsed)}
         >
           {isDrawerCollapsed ? (
             <ChevronRightIcon color="secondary" fontSize="large" />
