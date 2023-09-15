@@ -3,8 +3,18 @@ import _ from 'lodash';
 import { IMenu } from '../../_interfaces';
 import DishCard from './DishCard';
 import Spacer from '@/app/_common/Spacer';
+import { useSidebarStore } from '@/hooks/useSidebarStore';
 
 function Menu({ menu }: { menu: IMenu }) {
+  const isSidebarCollapsed = useSidebarStore((state) => state.isCollapsed);
+  const getGridSize = (isSidebarCollapsed: boolean) => {
+    return {
+      xs: 12,
+      sm: isSidebarCollapsed ? 6 : 12,
+      lg: isSidebarCollapsed ? 4 : 6,
+      xl: isSidebarCollapsed ? 3 : 4,
+    };
+  };
   return (
     <List>
       {!_.isEmpty(menu) &&
@@ -19,11 +29,18 @@ function Menu({ menu }: { menu: IMenu }) {
                 </Box>
                 <Spacer></Spacer>
                 <Box>
-                  <Grid container spacing={6}>
+                  <Grid
+                    container
+                    spacing={{
+                      xs: 2,
+                      sm: 2,
+                      md: 4,
+                    }}
+                  >
                     {!_.isEmpty(category.items) &&
                       category.items.map((item, index) => {
                         return (
-                          <Grid key={index} item xs={6} md={4}>
+                          <Grid key={index} item {...getGridSize(isSidebarCollapsed)}>
                             <DishCard key={index} dishInfo={item} />
                           </Grid>
                         );
