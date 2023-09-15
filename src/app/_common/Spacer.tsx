@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 
-function Spacer({ size = 1 }: { size?: number }) {
+function Spacer({ size = 1 }: { size?: number | string }) {
   return <Box mb={size}></Box>;
 }
 

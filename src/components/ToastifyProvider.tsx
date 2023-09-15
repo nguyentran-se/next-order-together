@@ -16,7 +16,6 @@ function ToastifyProvider({ children }: { children: React.ReactNode }) {
         draggable
         pauseOnHover={false}
       />
-      ;
     </>
   );
 }
