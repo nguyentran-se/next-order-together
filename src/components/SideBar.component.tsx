@@ -8,7 +8,6 @@ import { Stack, useTheme } from '@mui/material';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
-import SideBarTabs from './SidebarMenu';
 import SideBarMenu from './SidebarMenu';
 
 export default function SideBar() {
