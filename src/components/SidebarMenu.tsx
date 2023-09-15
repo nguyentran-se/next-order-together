@@ -6,7 +6,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import DiningIcon from '@mui/icons-material/Dining';
+
 
 function SideBarMenu({
   navbarMode,
@@ -46,6 +47,7 @@ function SideBarMenu({
               {tab.displayText === 'Home' && <HomeIcon />}
               {tab.displayText === 'Food Lounge' && <RestaurantMenuIcon />}
               {tab.displayText === 'My Orders' && <AutoStoriesIcon />}
+              {tab.displayText === 'My Rooms' && <DiningIcon />}
             </ListItemIcon>
             {
               <ListItemText

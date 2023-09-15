@@ -11,4 +11,8 @@ export const sideBarTabs = [
     displayText: 'My Orders',
     url: '/orders',
   },
+  {
+    displayText: 'My Rooms',
+    url: '/my-rooms',
+  },
 ];
