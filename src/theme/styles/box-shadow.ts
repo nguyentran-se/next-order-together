@@ -1,0 +1,1 @@
+export const CARD_BOX_SHADOW = '0px 8px 10px 3px rgba(0,0,0,0.1)';
