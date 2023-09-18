@@ -1,7 +1,7 @@
 import { ApiClient } from '@/apis/api-client';
 import Slack from '@/apis/slack';
 import ContentArea from '@/components/ContentArea.component';
-import NavBar from '@/components/NavBar.component.';
+import NavBar from '@/components/NavBar.component';
 import Redirecting from '@/components/Redirecting';
 import SideBar from '@/components/SideBar.component';
 import ToastifyProvider from '@/components/ToastifyProvider';

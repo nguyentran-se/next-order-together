@@ -8,7 +8,6 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui
 import { usePathname, useRouter } from 'next/navigation';
 import DiningIcon from '@mui/icons-material/Dining';
 
-
 function SideBarMenu({
   navbarMode,
   open = true,
@@ -18,7 +17,7 @@ function SideBarMenu({
   navbarMode?: boolean;
   onTabClickCallback?: Function;
 }) {
-  const isSidebarCollapsed = useSidebarStore((state) => state.isCollapsed);
+  const { isSidebarCollapsed } = useSidebarStore();
   const router = useRouter();
   const pathName = usePathname();
 

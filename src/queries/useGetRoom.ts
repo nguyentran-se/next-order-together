@@ -9,5 +9,7 @@ export const useGetRoom = (id: string) => {
     queryFn: () => getRoom(id),
     retry: 3,
     enabled: getIsLoggedin(),
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
 };
