@@ -1,12 +1,20 @@
 import { IDish } from './dish.interface';
 import { IHost } from './host.interface';
 
+export interface RoomInfo {
+  roomId: string;
+  hostId: string;
+  hostName: string;
+  roomName: string;
+}
+
 export interface IRoom {
   id: string;
   alias: string;
   createdAt: string;
   dueTime: null;
   scrapingData: IRoomScrapingData;
+  members: { user: IHost }[];
   host: IHost;
 }
 

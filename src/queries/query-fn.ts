@@ -3,6 +3,7 @@ import { API_URLS } from '../apis/api-url';
 import { setCookie } from 'cookies-next';
 import { IRoom } from '@/app/_interfaces';
 import { IProfile } from '@/app/_interfaces/profile.interface';
+import { Order } from '@/app/_interfaces/order.interface';
 
 interface postSignInResponseBody {
   accessToken: string;
@@ -45,5 +46,12 @@ export const getRoom = async (id: string) => {
 export const getUser = async () => {
   const url = `${API_URLS.profile}/me`;
   const res = await apiClient.get<IProfile>(url);
+  return res;
+}
+
+/**--------------------Order----------------------*/
+export const getOrders = async () => {
+  const url = `${API_URLS.orders}/me`;
+  const res = await apiClient.get<Order[]>(url);
   return res;
 }
