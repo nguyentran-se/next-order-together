@@ -1,12 +1,12 @@
 import { Box, Grid, List, ListItem, Typography, Stack } from '@mui/material';
 import _ from 'lodash';
-import { IMenu } from '../../_interfaces';
+import { IMenu, RoomInfo } from '../../_interfaces';
 import DishCard from './DishCard';
 import Spacer from '@/app/_common/Spacer';
 import { useSidebarStore } from '@/hooks/useSidebarStore';
 
-function Menu({ menu }: { menu: IMenu }) {
-  const isSidebarCollapsed = useSidebarStore((state) => state.isCollapsed);
+function Menu({ menu, roomInfo }: { menu: IMenu; roomInfo: RoomInfo }) {
+  const { isSidebarCollapsed } = useSidebarStore();
   const getGridSize = (isSidebarCollapsed: boolean) => {
     return {
       xs: 12,
@@ -41,7 +41,7 @@ function Menu({ menu }: { menu: IMenu }) {
                       category.items.map((item, index) => {
                         return (
                           <Grid key={index} item {...getGridSize(isSidebarCollapsed)}>
-                            <DishCard key={index} dishInfo={item} />
+                            <DishCard key={index} dishInfo={item} roomInfo={roomInfo} />
                           </Grid>
                         );
                       })}

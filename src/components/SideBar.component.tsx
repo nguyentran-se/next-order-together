@@ -11,8 +11,7 @@ import Toolbar from '@mui/material/Toolbar';
 import SideBarMenu from './SidebarMenu';
 
 export default function SideBar() {
-  const isSidebarCollapsed = useSidebarStore((state) => state.isCollapsed);
-  const setSidebarCollapsed = useSidebarStore((state) => state.setIsCollapsed);
+  const { isSidebarCollapsed, setSidebarCollapsed } = useSidebarStore();
   const theme = useTheme();
 
   return (

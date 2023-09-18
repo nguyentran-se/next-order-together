@@ -1,12 +1,11 @@
 'use client';
 
-import * as nextCookie from 'cookies-next';
+import { getIsLoggedin } from '@/utils/getIsLoggedin';
 import Unauthorized from '../../(errors)/unauthorized/page';
 
 function RoomsLayout({ children }: { children: React.ReactNode }) {
-  const hasBearerToken = nextCookie.hasCookie('sessionToken');
   // TODO: Replace this with AuthGuard and whitelist paths
-  return <>{hasBearerToken ? <>{children}</> : <Unauthorized />}</>;
+  return <>{getIsLoggedin() ? <>{children}</> : <Unauthorized />}</>;
 }
 
 export default RoomsLayout;

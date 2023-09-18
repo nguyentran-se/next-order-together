@@ -1,25 +1,35 @@
 'use client';
 
 import { useGetRooms } from '@/queries/useGetRooms';
+import { getIsLoggedin } from '@/utils/getIsLoggedin';
 import AddIcon from '@mui/icons-material/Add';
-import { Box, Button, CircularProgress, Container, Grid, LinearProgress, Stack, Typography, keyframes } from '@mui/material';
-import * as nextCookie from 'cookies-next';
+import { Box, Button, CircularProgress, Container, Grid, LinearProgress, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import CreateRoomModal from './CreateRoomModal';
 import RoomCard from './RoomCard.component';
+import { useSidebarStore } from '@/hooks/useSidebarStore';
 
 export default function WaitingRoom() {
   const { isLoading, isFetching, rooms, isError } = useGetRooms();
   const [isCreateRoomModalOpened, setCreateRoomModalOpened] = useState(false);
+  const { isSidebarCollapsed } = useSidebarStore();
   const [isLoggedin, setLoggedin] = useState(false);
   useEffect(() => {
-    const hasBearerToken = nextCookie.hasCookie('sessionToken');
-    setLoggedin(hasBearerToken);
+    setLoggedin(getIsLoggedin);
   }, []);
 
   const openCreateRoomModal = () => setCreateRoomModalOpened(true);
   const closeCreateRoomModal = () => setCreateRoomModalOpened(false);
+
+  const getGridSize = (isSidebarCollapsed: boolean) => {
+    return {
+      xs: 12,
+      sm: isSidebarCollapsed ? 6 : 12,
+      md: isSidebarCollapsed ? 4 : 6,
+      lg: 4,
+    };
+  };
 
   return (
     <>
@@ -29,7 +39,15 @@ export default function WaitingRoom() {
           <Box paddingBottom={4}>
             <Stack direction="row" justifyContent="space-between">
               <Box>
-                <Typography variant="h4">{`Today's Options`}</Typography>
+                <Typography variant="h4" component="span">{`Today's Options`}</Typography>
+                {!isLoading && isFetching && (
+                  <>
+                    <Typography mr={1} component="span">
+                      ...fetching
+                    </Typography>
+                    <CircularProgress size={15} />
+                  </>
+                )}
               </Box>
               <Box>
                 <Button
@@ -55,14 +73,13 @@ export default function WaitingRoom() {
             </Box>
           )}
 
-          {!isLoading && isFetching && <LinearProgress />}
           {!isLoading && (
             <Box>
-              <Grid container spacing={6}>
+              <Grid container spacing={4}>
                 {!!rooms &&
                   rooms.map((item, index) => {
                     return (
-                      <Grid key={index} item xs={6} md={4} lg={3}>
+                      <Grid key={index} item {...getGridSize(isSidebarCollapsed)}>
                         <Link href={`rooms/${item.id}`}>
                           <RoomCard key={index} table={item} />
                         </Link>

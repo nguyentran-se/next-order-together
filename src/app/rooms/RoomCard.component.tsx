@@ -33,9 +33,7 @@ function RoomCard({ table }: { table: IRoom }) {
 
   return (
     <Card
-      // elevation={5}
       sx={{
-        maxWidth: '390px',
         position: 'relative',
         borderRadius: '15px',
         boxShadow: '0px 8px 10px 3px rgba(0,0,0,0.1)',
@@ -47,7 +45,7 @@ function RoomCard({ table }: { table: IRoom }) {
         alt="green iguana"
         sx={{
           height: {
-            xs: '15px',
+            xs: '150px',
             sm: '260px',
             md: '340px',
           },
@@ -55,12 +53,12 @@ function RoomCard({ table }: { table: IRoom }) {
         }}
         image={roomInfo.photoHref}
       />
-      <CardContent sx={{ padding: '10px 15px' }}>
+      <CardContent style={{paddingBottom: '10px'}} sx={{ padding: '10px 15px' }}>
         <Typography className="nowrap-text" gutterBottom fontSize={'18px'} fontWeight="500" component="div">
           {roomInfo.roomName}
         </Typography>
         <Stack direction="row" justifyContent="space-between">
-          <Typography variant="body2" display="flex" alignItems="center">
+          <Typography variant="body2" display="flex" alignItems="center" fontSize='1rem'>
             <Typography color="text.secondary" component="span" mr={1}>
               <TimerIcon />
             </Typography>{' '}
@@ -74,11 +72,9 @@ function RoomCard({ table }: { table: IRoom }) {
               '& .MuiAvatar-root': { width: 24, height: 24, fontSize: 15 },
             }}
           >
-            {/* Dummy partipants */}
-            <Avatar name="Bao"></Avatar>
-            <Avatar name="Nguyen"></Avatar>
-            <Avatar name="Yen"></Avatar>
-            <Avatar name="Hue"></Avatar>
+            {table.members.map((member) => (
+              <Avatar key={`Avatar_${member.user.id}`} name={member.user.fullName} src={member.user.profile.avatarUrl} />
+            ))}
           </AvatarGroup>
         </Stack>
       </CardContent>
