@@ -1,7 +1,7 @@
 import { apiClient } from '@/app/layout';
 import { API_URLS } from '../apis/api-url';
 import { setCookie } from 'cookies-next';
-import { IRoom } from '@/app/_interfaces';
+import { IRoom, MyRoom } from '@/app/_interfaces';
 import { IProfile } from '@/app/_interfaces/profile.interface';
 import { Order } from '@/app/_interfaces/order.interface';
 
@@ -22,23 +22,21 @@ export const postSignIn = async (code: string) => {
   return res;
 };
 
-/**
- * @description to get all available rooms
- * @returns IRoom[]
- */
+/**--------------------Room----------------------*/
 export const getRooms = async () => {
-  const res = await apiClient.get<any>(API_URLS.room);
+  const res = await apiClient.get<IRoom[]>(API_URLS.room);
   return res;
 };
 
-/**
- * @param id
- * @description to get room with corresponding room id
- * @returns IRoom
- */
 export const getRoom = async (id: string) => {
   const url = `${API_URLS.room}/${id}`;
   const res = await apiClient.get<IRoom>(url);
+  return res;
+};
+
+export const getMyRooms= async () => {
+  const url = `${API_URLS.room}/me`;
+  const res = await apiClient.get<MyRoom[]>(url);
   return res;
 };
 
