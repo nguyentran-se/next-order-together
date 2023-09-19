@@ -7,9 +7,6 @@ import OrderAccordion from './OrderAccordion';
 
 export default function MyOrders() {
   const { orders, isLoading, isFetching, isError } = useGetOrders();
-  isLoading
-  isFetching
-  isError
   return (
     <>
       {!isError && (

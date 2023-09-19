@@ -109,7 +109,7 @@ function CreateRoomModal({ open, onClose }: { open: boolean; onClose: () => void
               />
 
               <InputLabel htmlFor="modal-bank-account" sx={{ mt: 2 }} style={{ color: common.black }}>
-                Bank account
+                {`Room name (optional)`}
               </InputLabel>
               <TextField
                 size="small"

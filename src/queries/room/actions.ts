@@ -1,5 +1,5 @@
 import { API_URLS } from '@/apis/api-url';
-import { IRoom } from '../../interfaces';
+import { IRoom, MyRoom } from '../../interfaces';
 import { apiClient } from '@/app/layout';
 
 export interface IPostCreateRoomRequest {
@@ -27,5 +27,11 @@ export const getRoom = async (id: string) => {
 
 export const postCreateRoom = async (body: IPostCreateRoomRequest) => {
   const res = await apiClient.post<IPostCreateRoomResponse>(API_URLS.room, { body });
+  return res;
+};
+
+export const getMyRooms= async () => {
+  const url = `${API_URLS.room}/me`;
+  const res = await apiClient.get<MyRoom[]>(url);
   return res;
 };

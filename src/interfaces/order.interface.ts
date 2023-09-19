@@ -2,6 +2,9 @@ import { IDish, IRoom } from '.';
 
 interface OrderRoom extends Omit<IRoom, 'scrapingData' | 'createdAt'> {
   discount: string;
+  scrapingData: {
+    name: string;
+  }
 }
 
 export interface OrderDish extends IDish {

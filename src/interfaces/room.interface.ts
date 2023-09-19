@@ -18,6 +18,19 @@ export interface IRoom {
   host: IHost;
 }
 
+export interface MyRoom {
+  alias: string;
+  createdAt: Date;
+  updatedAt: Date;
+  discount: string;
+  dueTime: string;
+  hostID: string;
+  id: string;
+  restaurantId: string;
+  scrapingData: IRoomScrapingData;
+  scrapingUrl: string;
+}
+
 export interface IRoomCardInfo {
   hostName: string;
   dueTime: string | null;

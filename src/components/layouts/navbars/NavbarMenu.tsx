@@ -23,6 +23,7 @@ function NavbarMenu() {
       </Tooltip>
       <Menu
         sx={{
+          position: 'fixed',
           mt: '45px',
           '& .MuiPaper-root': {
             padding: '0 15px',

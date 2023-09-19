@@ -14,10 +14,6 @@ export default function WaitingRoom() {
   const { isLoading, isFetching, rooms, isError } = useGetRooms();
   const [isCreateRoomModalOpened, setCreateRoomModalOpened] = useState(false);
   const { isSidebarCollapsed } = useSidebarStore();
-  const [isLoggedin, setLoggedin] = useState(false);
-  useEffect(() => {
-    setLoggedin(getIsLoggedin);
-  }, []);
 
   const openCreateRoomModal = () => setCreateRoomModalOpened(true);
   const closeCreateRoomModal = () => setCreateRoomModalOpened(false);
@@ -27,14 +23,14 @@ export default function WaitingRoom() {
       xs: 12,
       sm: isSidebarCollapsed ? 6 : 12,
       md: isSidebarCollapsed ? 4 : 6,
-      lg: 4,
+      lg: isSidebarCollapsed ? 3 : 4,
     };
   };
 
   return (
     <>
       <CreateRoomModal open={isCreateRoomModalOpened} onClose={closeCreateRoomModal} />
-      {isLoggedin && !isError && (
+      {!isError && (
         <Container maxWidth={false} sx={{ pt: 2 }}>
           <Box paddingBottom={4}>
             <Stack direction="row" justifyContent="space-between">
@@ -91,8 +87,7 @@ export default function WaitingRoom() {
           )}
         </Container>
       )}
-      {isLoggedin && isError && <Typography>Failed to get rooms</Typography>}
-      {!isLoggedin && <Typography>Please log in to proceed</Typography>}
+      {isError && <Typography>Failed to get rooms</Typography>}
     </>
   );
 }

@@ -8,8 +8,8 @@ import { getRoomDetailFromRoomData } from '../room-utils';
 function RoomInfo({ roomInfo }: { roomInfo: IRoom }) {
   const roomDetail = getRoomDetailFromRoomData(roomInfo);
   return (
-    <>
-      <Stack direction="row">
+    <Stack direction="column">
+      <Stack direction={{ xs: 'column', md: 'row' }}>
         {/* Room name */}
         <Typography variant="h4" fontWeight="500" sx={{ mr: 1 }}>
           {roomDetail.name}
@@ -29,21 +29,23 @@ function RoomInfo({ roomInfo }: { roomInfo: IRoom }) {
         </Box>
       </Stack>
 
-      {/* Description */}
-      <Typography color="text.secondary">{roomDetail.description}</Typography>
+      <Box>
+        {/* Description */}
+        <Typography color="text.secondary">{roomDetail.description}</Typography>
 
-      {/* Address and price range */}
-      <Typography component="div">
-        <Typography>
-          <PlaceIcon />
-          {roomDetail.address.street || 'Somewhere in the world'}
+        {/* Address and price range */}
+        <Typography component="div">
+          <Typography>
+            <PlaceIcon />
+            {roomDetail.address.street || 'Somewhere in the world'}
+          </Typography>
+          <Typography>
+            <SellIcon />
+            {`Price range (on working)`}
+          </Typography>
         </Typography>
-        <Typography>
-          <SellIcon />
-          {`Price range (on working)`}
-        </Typography>
-      </Typography>
-    </>
+      </Box>
+    </Stack>
   );
 }
 

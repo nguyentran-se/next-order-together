@@ -1,9 +1,9 @@
+import Avatar from '@/components/common/Avatar.component';
+import CommonAccordion from '@/components/common/CommonAccordion';
 import { formatPrice } from '@/utils/format-price';
 import { Box, Chip, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import { useEffect } from 'react';
 import { Order, OrderDish } from '../../interfaces/order.interface';
-import CommonAccordion from '@/components/common/CommonAccordion';
-import Avatar from '@/components/common/Avatar.component';
+import { getRoomInfoFromRoomData } from '../rooms/room-utils';
 
 function OrderAccordion({ order }: { order: Order }) {
   const dishes = order.detail?.dishes;
@@ -25,7 +25,7 @@ function OrderAccordion({ order }: { order: Order }) {
       summary={
         <Stack width="100%" flexDirection="row" justifyContent="space-between" alignItems="center">
           {/* Get room name instead */}
-          <Typography fontWeight="500">{order.room.id}</Typography>
+          <Typography fontWeight="500">{order.room.scrapingData.name}</Typography>
           <Stack flexDirection="row">
             <Typography component="div" textAlign="right">
               <Typography>{order.room.alias || order.room.host.fullName}</Typography>

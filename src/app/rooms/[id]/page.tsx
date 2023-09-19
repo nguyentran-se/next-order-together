@@ -15,16 +15,6 @@ function Room() {
   const params = useParams();
   const id = _.isArray(params.id) ? params.id[0] : params.id;
   const { data, isFetching, isLoading, isError } = useGetRoom(id);
-  // const data = mockMenu;
-  // const isFetching = false;
-  // const isLoading = false;
-  // const isError = false;
-
-  useEffect(() => {
-    console.log('data :>> ', data);
-    console.log('isFetching :>> ', isFetching);
-    console.log('isLoading :>> ', isLoading);
-  }, [data, isFetching, isLoading]);
 
   return (
     <>
@@ -39,9 +29,9 @@ function Room() {
           {!isLoading &&
             (!_.isEmpty(data) ? (
               <Stack direction="column">
-                <Stack direction="row" justifyContent="space-between">
-                  <Stack><RoomInfo roomInfo={data}></RoomInfo></Stack>
-                  <Stack><HostInfo hostInfo={data.host}></HostInfo></Stack>
+                <Stack direction={{ xs: 'column', md: 'row' }} spacing={{xs: 3, md: 'auto'}} justifyContent="space-between">
+                    <RoomInfo roomInfo={data}></RoomInfo>
+                    <HostInfo hostInfo={data.host}></HostInfo>
                 </Stack>
                 <Spacer size={2}></Spacer>
                 <Box>
