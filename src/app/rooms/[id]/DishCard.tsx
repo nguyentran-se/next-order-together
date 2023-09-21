@@ -1,4 +1,4 @@
-import { IDish, RoomInfo } from '@/app/_interfaces';
+import { IDish, RoomInfo } from '../../../interfaces';
 import { useDraftOrdersStore } from '@/hooks/useDraftOrdersStore';
 import { Box, Button, ButtonGroup, Card, CardMedia, Stack, Typography, useTheme } from '@mui/material';
 import { useState } from 'react';

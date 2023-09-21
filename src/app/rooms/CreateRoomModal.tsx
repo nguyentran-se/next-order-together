@@ -1,10 +1,10 @@
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, CircularProgress, IconButton, InputLabel, Modal, Stack, TextField, Typography } from '@mui/material';
 import { common } from '@mui/material/colors';
-import Spacer from '../_common/Spacer';
 import { useEffect, useState } from 'react';
 import { isDueTimeValid, isUrlValid } from './room-utils';
-import { useCreateRoom } from '@/mutations/useCreateRoom';
+import { useCreateRoom } from '@/queries/room/useCreateRoom';
+import Spacer from '@/components/common/Spacer';
 
 const modalStyle = {
   position: 'absolute' as 'absolute',

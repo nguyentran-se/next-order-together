@@ -2,7 +2,7 @@ import { Typography, Box, Stack } from '@mui/material';
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import PlaceIcon from '@mui/icons-material/Place';
 import SellIcon from '@mui/icons-material/Sell';
-import { IRoom } from '@/app/_interfaces';
+import { IRoom } from '../../../interfaces';
 import { getRoomDetailFromRoomData } from '../room-utils';
 
 function RoomInfo({ roomInfo }: { roomInfo: IRoom }) {

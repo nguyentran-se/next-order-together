@@ -1,9 +1,9 @@
 import { Box, Grid, List, ListItem, Typography, Stack } from '@mui/material';
 import _ from 'lodash';
-import { IMenu, RoomInfo } from '../../_interfaces';
+import { IMenu, RoomInfo } from '../../../interfaces';
 import DishCard from './DishCard';
-import Spacer from '@/app/_common/Spacer';
 import { useSidebarStore } from '@/hooks/useSidebarStore';
+import Spacer from '@/components/common/Spacer';
 
 function Menu({ menu, roomInfo }: { menu: IMenu; roomInfo: RoomInfo }) {
   const { isSidebarCollapsed } = useSidebarStore();

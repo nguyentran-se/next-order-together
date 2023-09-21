@@ -1,9 +1,9 @@
 import { AvatarGroup, Card, CardContent, CardMedia, Stack, SxProps, Typography } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import { IRoom, IRoomCardInfo } from '../_interfaces';
+import { IRoom, IRoomCardInfo } from '../../interfaces';
 import { getRoomInfoFromRoomData } from './room-utils';
 import TimerIcon from '@mui/icons-material/Timer';
-import Avatar from '../_common/Avatar.component';
+import Avatar from '@/components/common/Avatar.component';
 
 const HostNameStyles: SxProps = {
   color: '#0060a9',

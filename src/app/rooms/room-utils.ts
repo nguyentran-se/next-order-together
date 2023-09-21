@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { IRoom } from '../_interfaces';
+import { IRoom } from '../../interfaces';
 
 export const getRoomDetailFromRoomData = (roomData: IRoom) => {
   return Object.values(roomData.scrapingData.entities)[0];

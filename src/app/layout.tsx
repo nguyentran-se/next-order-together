@@ -1,14 +1,14 @@
 import { ApiClient } from '@/apis/api-client';
 import Slack from '@/apis/slack';
-import ContentArea from '@/components/ContentArea.component';
-import NavBar from '@/components/NavBar.component';
-import Redirecting from '@/components/Redirecting';
-import SideBar from '@/components/SideBar.component';
-import ToastifyProvider from '@/components/ToastifyProvider';
-import ThemeRegistry from '@/theme/ThemeRegistry';
-import Providers from '@/utils/provider';
+import ContentArea from '@/components/layouts/content/ContentArea.component';
+import NavBar from '@/components/layouts/navbars/Navbar';
+import SideBar from '@/components/layouts/sidebars/Sidebar';
+import Providers from '@/providers/QueryClientProvider';
+import ToastifyProvider from '@/providers/ToastifyProvider';
+import ThemeRegistry from '@/theme/ThemeRegistryProvider';
 import { Stack } from '@mui/material';
 import { Roboto } from 'next/font/google';
+import Redirecting from './Redirecting';
 import './globals.css';
 
 const font = Roboto({
