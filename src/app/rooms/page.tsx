@@ -1,6 +1,5 @@
 'use client';
 
-import { useGetRooms } from '@/queries/useGetRooms';
 import { getIsLoggedin } from '@/utils/getIsLoggedin';
 import AddIcon from '@mui/icons-material/Add';
 import { Box, Button, CircularProgress, Container, Grid, LinearProgress, Stack, Typography } from '@mui/material';
@@ -9,6 +8,7 @@ import { useEffect, useState } from 'react';
 import CreateRoomModal from './CreateRoomModal';
 import RoomCard from './RoomCard.component';
 import { useSidebarStore } from '@/hooks/useSidebarStore';
+import { useGetRooms } from '@/queries/room/useGetRooms';
 
 export default function WaitingRoom() {
   const { isLoading, isFetching, rooms, isError } = useGetRooms();

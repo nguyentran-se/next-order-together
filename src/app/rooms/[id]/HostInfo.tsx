@@ -1,4 +1,4 @@
-import { IHost } from '@/app/_interfaces/host.interface';
+import { IHost } from '../../../interfaces/host.interface';
 import { Avatar, Box, Typography, Divider, Stack } from '@mui/material';
 
 function HostInfo({ hostInfo }: { hostInfo: IHost }) {

@@ -1,7 +1,6 @@
 'use client';
 
-import Spacer from '@/app/_common/Spacer';
-import { useGetRoom } from '@/queries/useGetRoom';
+import { useGetRoom } from '@/queries/room/useGetRoom';
 import { Box, CircularProgress, Container, Stack, Typography } from '@mui/material';
 import _ from 'lodash';
 import { useParams } from 'next/navigation';
@@ -10,6 +9,7 @@ import { getRoomInfoFromRoomData, getRoomMenuFromRoomData } from '../room-utils'
 import HostInfo from './HostInfo';
 import Menu from './Menu';
 import RoomInfo from './RoomInfo';
+import Spacer from '@/components/common/Spacer';
 
 function Room() {
   const params = useParams();

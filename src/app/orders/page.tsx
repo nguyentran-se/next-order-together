@@ -1,6 +1,6 @@
 'use client';
 
-import { useGetOrders } from '@/queries/useGetOrders';
+import { useGetOrders } from '@/queries/order/useGetOrders';
 import { getIsLoggedin } from '@/utils/getIsLoggedin';
 import { Box, CircularProgress, LinearProgress, Typography } from '@mui/material';
 import _ from 'lodash';

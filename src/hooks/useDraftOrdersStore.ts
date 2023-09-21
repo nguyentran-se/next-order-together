@@ -1,5 +1,5 @@
-import { IDish, RoomInfo } from '@/app/_interfaces';
-import { Order } from '@/app/_interfaces/order.interface';
+import { IDish, RoomInfo } from '../interfaces';
+import { Order } from '../interfaces/order.interface';
 import _ from 'lodash';
 import { create } from 'zustand';
 

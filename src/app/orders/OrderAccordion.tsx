@@ -1,9 +1,9 @@
 import { formatPrice } from '@/utils/format-price';
 import { Box, Chip, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useEffect } from 'react';
-import Accordion from '../_common/Accordion';
-import { Order, OrderDish } from '../_interfaces/order.interface';
-import Avatar from '../_common/Avatar.component';
+import { Order, OrderDish } from '../../interfaces/order.interface';
+import CommonAccordion from '@/components/common/CommonAccordion';
+import Avatar from '@/components/common/Avatar.component';
 
 function OrderAccordion({ order }: { order: Order }) {
   const dishes = order.detail?.dishes;
@@ -21,7 +21,7 @@ function OrderAccordion({ order }: { order: Order }) {
     return handler[status] || { label: status };
   };
   return (
-    <Accordion
+    <CommonAccordion
       summary={
         <Stack width="100%" flexDirection="row" justifyContent="space-between" alignItems="center">
           {/* Get room name instead */}
@@ -94,7 +94,7 @@ function OrderAccordion({ order }: { order: Order }) {
           </Table>
         </TableContainer>
       }
-    ></Accordion>
+    ></CommonAccordion>
   );
 }
 
