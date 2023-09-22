@@ -1,5 +1,6 @@
 import { ApiClient } from '@/apis/api-client';
 import Slack from '@/apis/slack';
+import LogInGuard from '@/components/auth/LoginGuard';
 import ContentArea from '@/components/layouts/content/ContentArea.component';
 import NavBar from '@/components/layouts/navbars/Navbar';
 import SideBar from '@/components/layouts/sidebars/Sidebar';
@@ -12,10 +13,10 @@ import Redirecting from './Redirecting';
 import './globals.css';
 
 const font = Roboto({
-  weight: ['100', "300", "500", "700", "900"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
- });
+  weight: ['100', '300', '500', '700', '900'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+});
 
 // export const metadata: Metadata = {
 //   title: 'Order together',
@@ -40,9 +41,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       </Stack>
                       <Stack>
                         <ContentArea>
-                          {/* TODO: include later */}
-                          {/* <Suspense fallback={<p style={{ textAlign: 'center' }}>loading... on initial request</p>}> */}
-                          {children}
+                          <LogInGuard>
+                            {/* TODO: include later */}
+                            {/* <Suspense fallback={<p style={{ textAlign: 'center' }}>loading... on initial request</p>}> */}
+                            {children}
+                          </LogInGuard>
                           {/* </Suspense> */}
                         </ContentArea>
                       </Stack>

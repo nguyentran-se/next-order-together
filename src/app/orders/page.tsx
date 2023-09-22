@@ -1,17 +1,18 @@
 'use client';
 
 import { useGetOrders } from '@/queries/order/useGetOrders';
-import { getIsLoggedin } from '@/utils/getIsLoggedin';
 import { Box, CircularProgress, LinearProgress, Typography } from '@mui/material';
 import _ from 'lodash';
 import OrderAccordion from './OrderAccordion';
 
 export default function MyOrders() {
   const { orders, isLoading, isFetching, isError } = useGetOrders();
-  const isLoggedin = getIsLoggedin();
+  isLoading
+  isFetching
+  isError
   return (
     <>
-      {isLoggedin && !isError && (
+      {!isError && (
         <>
           {isLoading && (
             <Box textAlign="center">
@@ -27,8 +28,7 @@ export default function MyOrders() {
           )}
         </>
       )}
-      {isLoggedin && isError && <Typography>Failed to get rooms</Typography>}
-      {!isLoggedin && <Typography>Please log in to proceed</Typography>}
+      {isError && <Typography>Failed to get rooms</Typography>}
     </>
   );
 }
