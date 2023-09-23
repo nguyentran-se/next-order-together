@@ -8,7 +8,8 @@ export const useGetMyRooms = () => {
     queryKey: ['get-my-rooms'],
     queryFn: getMyRooms,
     retry: 3,
-    staleTime: 1000 * 5,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
     enabled: getIsLoggedin(),
   });
   return {

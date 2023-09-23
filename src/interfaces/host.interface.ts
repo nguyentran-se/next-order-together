@@ -8,11 +8,17 @@ export interface IHost {
   profile: Profile;
 }
 
-interface Profile {
+export interface Profile {
   id: string;
   createdAt: string;
   updatedAt: string;
   bankName: string;
   bankAccount: string;
   avatarUrl: string;
+}
+
+export interface BankCredentials {
+  name: string;
+  bankName: string;
+  bankAccount: string;
 }
